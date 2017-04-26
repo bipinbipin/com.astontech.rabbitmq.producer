@@ -1,5 +1,6 @@
 package demo;
 
+import demo.performance.Stopwatch;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -31,13 +32,18 @@ public class Producer implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
 
-        IntStream.range(1, 100)
+        Stopwatch timer = new Stopwatch();
+        IntStream.range(1, 100000)
 //                .parallel()
                 .forEach(i -> {
 
+//                    System.out.println("Sending message...");
+                    rabbitTemplate.convertAndSend(QUEUE_NAME, new MessagePOJO(MSG_NAME + i, UUID.randomUUID().toString()));
 
 
                 });
+
+        System.out.println("Time Elapsed: " + timer.elapsedTime());
 
 //        for(int i=0; i< 1000; i++) {
 //

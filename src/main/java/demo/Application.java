@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application {
 
-    final static String queueName = "spring-boot";
-
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(Application.class, args);
     }

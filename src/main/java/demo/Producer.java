@@ -33,7 +33,7 @@ public class Producer implements CommandLineRunner {
 
 
         Stopwatch timer = new Stopwatch();
-        IntStream.range(1, 100000)
+        IntStream.range(1, 1000)
 //                .parallel()
                 .forEach(i -> {
 
